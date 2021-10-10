@@ -13,3 +13,11 @@ app.use(express.json());
 app.use(routes);
 
 app.listen(PORT, console.log(`Servidor up en puerto: ${PORT}`));
+(async () => {
+  try {
+    await sequelize.authenticate();
+    console.log("Conectado a la bd");
+  } catch (error) {
+    console.log("Error algo salio mal: ", error);
+  }
+})();
