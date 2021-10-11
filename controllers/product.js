@@ -21,7 +21,7 @@ const getProducts = async (req, res) => {
 const searchProducts = async (req, res) => {
   const { products } = req.params;
   try {
-    const data = await Product.findAndCountAll({
+    const { rows } = await Product.findAndCountAll({
       where: {
         name: {
           [Op.like]: `${products}%`,
@@ -34,7 +34,7 @@ const searchProducts = async (req, res) => {
       ],
       attributes: { exclude: ["category"] },
     });
-    res.status(200).send(data);
+    res.status(200).send(rows);
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: error.message });
