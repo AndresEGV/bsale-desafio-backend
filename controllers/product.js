@@ -40,5 +40,28 @@ const searchProducts = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+const getProductsByCategory = async (req, res) => {
+  const { category } = req.params;
+  try {
+    const [products] = await Category.findAll({
+      where: {
+        name: {
+          [Op.like]: `${category}%`,
+        },
+      },
+      include: [
+        {
+          model: Product,
+          attributes: { exclude: ["category", "id"] },
+        },
+      ],
+      attributes: { exclude: ["id"] },
+    });
+    res.status(200).send(products);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: error.message });
+  }
+};
 
-module.exports = { getProducts, searchProducts };
+module.exports = { getProducts, searchProducts, getProductsByCategory };
