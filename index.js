@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 app.use(routes);
-
+app.use(express.static("/public"));
 //Levantar se4vidor de express
 app.listen(PORT, console.log(`Servidor up en puerto: ${PORT}`));
 
