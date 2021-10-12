@@ -1,6 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/database");
 
+//Tabla Categoria junto con su configuracion de los campos a utilizar
 const Product = sequelize.define(
   "Product",
   {

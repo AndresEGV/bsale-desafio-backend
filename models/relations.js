@@ -1,7 +1,7 @@
 const Product = require("./product");
 const Category = require("./category");
 
-//Relacion de tablas 1 es a N
+//Establecer relacion entre las dos tablas, uno es a muchos (1:N)
 
 Category.hasMany(Product, {
   foreignKey: "category",
