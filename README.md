@@ -155,7 +155,7 @@ Esta es una API de  consumo. Solo se utilizó el  método HTTP GET.
   }
 ]
    ```
-3. [/api/Categories/snack](https://bsale-test-store.herokuapp.com/api/categories/snack) Recibe como parámetro el string de una categoría y retorna todos los productos pertenecientes a la categoría ingresada.
+3. [/api/categories/snack](https://bsale-test-store.herokuapp.com/api/categories/snack) Recibe como parámetro el string de una categoría y retorna todos los productos pertenecientes a la categoría ingresada.
 ```json
 [
   {
