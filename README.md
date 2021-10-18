@@ -39,183 +39,165 @@ Desafío b-sale. Tienda online que despliegue productos agrupados por la categor
   </p>
 </div>
 
-
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
-
-
-
 <!-- ABOUT THE PROJECT -->
-## About The Project
-![stack Overflow](https://ibb.co/xLJhsKY)
+## Sobre el proyecto
+![stack Overflow](bsale_front.png)
+Ejercicio Construir una tienda online que despliegue productos agrupados por la categoría a la que pertenecen, generando por separado backend (API REST) y frontend (aplicación que la consuma).
 
-
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email`, `email_client`, `project_title`, `project_description`
+Además, hay que agregar un buscador, el cual tiene que estar implementado a nivel de servidor, mediante una Api Rest cuyo lenguaje y framework puede ser de libre elección. Es decir, los datos de productos deben llegar filtrados al cliente.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
-### Built With
+### BackEnd Construido con
 
-* [Next.js](https://nextjs.org/)
-* [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
+* [Express](https://www.npmjs.com/package/express)
+* [dotenv](https://www.npmjs.com/package/dotenv)
+* [cors](https://www.npmjs.com/package/cors)
+* [sequelize](https://www.npmjs.com/package/sequelize)
+* [mysql2](https://www.npmjs.com/package/mysql2)
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+## Empezando
+Siga las intrucciones que vienen a continuación para poder probar el proyecto localmente.
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
 
-### Installation
+### Instalación
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+Instale las dependencias e inicie el servidor.
+git clone https://github.com/JFelixZuniga/BSale-test-Backend.git
+cd BSale-test-Backend
+npm i
+node index
+
+
+1. Clonar el repositorio
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/AndresEGV/bsale-desafio-backend/
    ```
-3. Install NPM packages
+2. Instalar dependecias NPM
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
+3. Abrir terminal en el proyecto y ejecutar el siguiente comando 
    ```js
-   const API_KEY = 'ENTER YOUR API';
+   node index.js
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
-<!-- USAGE EXAMPLES -->
-## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+## Endpoints
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+Esta es una API de  consumo. Solo se utilizó el  método HTTP GET.
+1. [api/products](https://bsale-test-store.herokuapp.com/api/products) Retorna la cantidad total de productos en un arreglo de objetos
+ ```json
+  [
+    {
+        id: 5,
+        name: "ENERGETICA MR BIG",
+        url_image: "https://dojiw2m9tvv09.cloudfront.net/11132/product/misterbig3308256.jpg",
+        price: 1490,
+        discount: 20,
+        Category: {
+        id: 1,
+        name: "bebida energetica"
+        }
+        },
+        {
+        id: 6,
+        name: "ENERGETICA RED BULL",
+        url_image: "https://dojiw2m9tvv09.cloudfront.net/11132/product/redbull8381.jpg",
+        price: 1490,
+        discount: 0,
+        Category: {
+        id: 1,
+        name: "bebida energetica"
+   }
+ },
 
+]
+   ```
+2. [/api/Products/:products](https://bsale-test-store.herokuapp.com/api/products/cerveza)  Retorna la cantidad total de productos y todos los productos que coincidan con el parámetro ingresado.
+```json
+ [
+    {
+        id: 98,
+        name: "Cerveza Escudo Normal LATA 350CC",
+        url_image: "",
+        price: 600,
+        discount: 0,
+        Category: {
+        id: 6,
+        name: "cerveza"
+        }
+        },
+        {
+        id: 99,
+        name: "Cerveza Escudo Sin Filtrar LATA 350CC",
+        url_image: "",
+        price: 800,
+        discount: 0,
+        Category: {
+        id: 6,
+        name: "cerveza"
+    }
+  }
+]
+   ```
+3. [/api/Categories/snack](https://bsale-test-store.herokuapp.com/api/categories/snack) Recibe como parámetro el string de una categoría y retorna todos los productos pertenecientes a la categoría ingresada.
+```json
+[
+  {
+    name: "snack",
+    Products: [
+      {
+          name: "Maní salado",
+          url_image: "https://dojiw2m9tvv09.cloudfront.net/11132/product/manisaladomp4415.jpg",
+          price: 600,
+          discount: 0
+          },
+          {
+          name: "Mani Sin Sal",
+          url_image: "https://dojiw2m9tvv09.cloudfront.net/11132/product/manisinsalmp6988.jpg",
+          price: 500,
+          discount: 0
+          },
+          {
+          name: "Papas Fritas Lisas Bolsa Grande",
+          url_image: "https://dojiw2m9tvv09.cloudfront.net/11132/product/papaslisasgrande7128.jpg",
+          price: 1490,
+          discount: 0
+          },
+          {
+          name: "Papas Fritas Bolsa Pequeña",
+          url_image: "https://dojiw2m9tvv09.cloudfront.net/11132/product/papaslisas7271.jpg",
+          price: 500,
+          discount: 0
+          },
+          {
+          name: "Papas Fritas Tarro",
+          url_image: "https://dojiw2m9tvv09.cloudfront.net/11132/product/78028005335657432.jpg",
+          price: 1990,
+          discount: 0
+      }
+    ]
+  }
+]
+   ```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
-<!-- ROADMAP -->
-## Roadmap
-
-- [] Feature 1
-- [] Feature 2
-- [] Feature 3
-    - [] Nested Feature
-
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
-
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
