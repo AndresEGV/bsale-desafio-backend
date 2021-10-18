@@ -72,12 +72,6 @@ Siga las intrucciones que vienen a continuación para poder probar el proyecto l
 
 ### Instalación
 
-Instale las dependencias e inicie el servidor.
-git clone https://github.com/JFelixZuniga/BSale-test-Backend.git
-cd BSale-test-Backend
-npm i
-node index
-
 
 1. Clonar el repositorio
    ```sh
